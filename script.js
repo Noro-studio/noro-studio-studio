@@ -36,3 +36,25 @@ if(form){
  });
 }
 })();
+/* Filtres de catégories du portfolio */
+(function(){
+ const filters=Array.from(document.querySelectorAll("[data-portfolio-filter]"));
+ const cards=Array.from(document.querySelectorAll(".portfolio-filter-grid [data-category]"));
+ const status=document.getElementById("portfolio-status");
+ const labels={all:"tous les secteurs",restaurant:"la restauration",artisanat:"l'artisanat",immobilier:"l'immobilier",beaute:"la beauté et le bien-être"};
+ if(!filters.length||!cards.length)return;
+ filters.forEach(function(button){
+  button.addEventListener("click",function(){
+   const selected=button.getAttribute("data-portfolio-filter");
+   filters.forEach(function(item){const active=item===button;item.classList.toggle("is-active",active);item.setAttribute("aria-pressed",String(active));});
+   let visible=0;
+   cards.forEach(function(card){
+    const show=selected==="all"||card.getAttribute("data-category")===selected;
+    card.hidden=!show;
+    card.classList.remove("is-entering");
+    if(show){visible+=1;void card.offsetWidth;card.classList.add("is-entering");}
+   });
+   if(status)status.textContent=visible+" concept"+(visible>1?"s":"")+" affiché"+(visible>1?"s":"")+" pour "+labels[selected]+". Sélectionnez une carte pour explorer le mini-site.";
+  });
+ });
+})();
