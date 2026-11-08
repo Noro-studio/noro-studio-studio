@@ -5,6 +5,6 @@
 */
 window.NORO_CONFIG = {
   brandName: "Noro Studio",
-  contactEmail: "A_REMPLACER",
+  contactEmail: "contact.lanteuilweb@gmail.com",
   locationLabel: "Studio indépendant · France"
 };
