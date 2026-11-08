@@ -1,47 +1,53 @@
-# Publier Noro Studio gratuitement avec GitHub Pages
+# Publication et maintenance de Noro Studio
 
-GitHub Pages peut héberger gratuitement un site statique dans un dépôt public avec un compte GitHub Free. Le site et son code seront alors visibles publiquement : ne mets aucun mot de passe, document personnel ou donnée privée dans le dépôt.
+## Site actuel
 
-## 1. Préparer le dossier
+- Dépôt : https://github.com/Noro-studio/noro-studio-studio
+- Site publié : https://noro-studio.github.io/noro-studio-studio/
+- Branche : `main`
+- Source GitHub Pages : `/(root)`
+- E-mail de contact configuré : `contact.lanteuilweb@gmail.com`
 
-1. Télécharge `noro-studio-site.zip` depuis la conversation.
-2. Dans Windows, clic droit sur le ZIP puis **Extraire tout**.
-3. Ouvre le dossier extrait `noro-studio`.
-4. Avant publication, ouvre `site-config.js` dans le Bloc-notes et remplace `A_REMPLACER` par ton adresse e-mail.
-5. Complète la page `legal.html` avec les informations exactes. Ne publie pas les mentions entre crochets.
+## Comment les changements sont publiés
 
-## 2. Créer le dépôt GitHub
+Le dépôt GitHub est la source du site. Lorsqu'un changement est enregistré sur la branche `main`, GitHub Pages lance automatiquement une nouvelle publication.
 
-1. Connecte-toi à GitHub.
-2. Clique sur **New repository**.
-3. Nom du dépôt : `noro-studio-site`.
-4. Choisis **Public** (requis pour GitHub Free avec GitHub Pages).
-5. Crée le dépôt.
+Pour vérifier son état :
 
-## 3. Ajouter les fichiers
+1. Ouvrir l'onglet **Actions** du dépôt.
+2. Repérer le workflow GitHub Pages le plus récent.
+3. Attendre que son statut soit terminé.
+4. Ouvrir le site et actualiser la page. En cas d'ancien affichage, faire un rechargement forcé avec `Ctrl + F5`.
 
-1. Dans le dépôt, clique sur **Add file**, puis **Upload files**.
-2. Depuis le dossier `noro-studio`, ajoute à la racine du dépôt les fichiers `index.html`, `styles.css`, `script.js`, `site-config.js`, `legal.html`, `README.md`, `.nojekyll` et `GUIDE-PUBLICATION.md`.
-3. Ajoute également les trois fichiers du dossier `assets` en conservant le dossier `assets` dans le dépôt. Le résultat doit contenir `assets/mark.svg`, `assets/mark-light.svg` et `assets/favicon.svg`.
-4. Clique sur **Commit changes**.
+## Adresse e-mail
 
-Si le navigateur ne conserve pas le sous-dossier `assets` lors du glisser-déposer, crée le dossier en ajoutant un fichier avec le chemin `assets/mark.svg`, puis téléverse les deux autres fichiers de la même façon.
+L'adresse est déjà configurée dans `site-config.js` :
 
-## 4. Activer GitHub Pages
+```js
+window.NORO_CONFIG = {
+  brandName: "Noro Studio",
+  contactEmail: "contact.lanteuilweb@gmail.com",
+  locationLabel: "Studio indépendant · France"
+};
+```
 
-1. Dans le dépôt, ouvre **Settings**.
-2. Dans la colonne latérale, sélectionne **Pages**.
-3. Sous **Build and deployment**, choisis **Deploy from a branch**.
-4. Sélectionne la branche `main` et le dossier `/ (root)`.
-5. Clique sur **Save**.
-6. Quand la publication est terminée, GitHub affiche l'adresse du site dans la section Pages. Elle ressemble à `https://TON-PSEUDO.github.io/noro-studio-site/`.
+Le formulaire prépare un e-mail via le logiciel de messagerie du visiteur. Il ne transmet pas automatiquement les demandes à un serveur et ne garantit pas leur réception si aucune application de messagerie n'est configurée sur son appareil.
 
-La publication peut prendre quelques minutes. Vérifie le site sur ordinateur et téléphone.
+## Organisation des fichiers
 
-## 5. Avant de montrer le site à un prospect
+- `index.html`, `styles.css`, `script.js`, `site-config.js` : site principal.
+- `assets/` : logos et favicon.
+- `exemples/` : mini-sites fictifs de démonstration et leur feuille de style.
+- `legal.html` : modèle d'informations légales à compléter.
 
-- Le nom « Noro Studio » est provisoire et n'a pas été vérifié auprès de l'INPI.
-- Complète les informations légales et vérifie les obligations applicables à ta situation.
-- Le formulaire ouvre le logiciel de messagerie du visiteur ; il ne stocke pas et n'envoie pas les demandes sur un serveur.
-- Les trois cartes de portfolio sont des concepts fictifs, pas des clients ou des commandes réelles.
-- Vérifie que les prix affichés correspondent à ce que tu sais réellement livrer. Un devis précis doit définir le périmètre, les délais, les retours inclus, les frais tiers, la maintenance et le paiement.
+## Avant de présenter le site à des prospects
+
+- Les exemples « Le Comptoir », « Atelier Forme », « Aurel Immobilier » et « Studio Ama » sont des concepts fictifs, pas des clients réels.
+- Compléter les informations légales avec les données exactes de l'éditeur et de l'hébergeur, et vérifier les obligations applicables à la situation.
+- Vérifier les droits sur les photos et ressources visuelles.
+- Vérifier que les tarifs et les prestations annoncés correspondent bien à ce qui peut être livré.
+- Un devis doit définir précisément le périmètre, les délais, les corrections incluses, les frais externes, la maintenance et les modalités de paiement.
+
+## Sécurité
+
+Le dépôt est public : ne jamais y ajouter de mot de passe, clé d'API, document d'identité, donnée personnelle de client ou information confidentielle.
