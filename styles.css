@@ -15,3 +15,59 @@
 @media(max-width:900px){.navigation{gap:18px}.hero-grid{gap:20px}.hero-art{transform:scale(.92)}.service-row{grid-template-columns:32px 50px 1fr 38px}.service-tags{grid-column:3/4}.service-row>a{grid-column:4;grid-row:1/3}.approach-grid,.contact-grid{gap:55px}.faq-grid{gap:55px}}
 @media(max-width:700px){.container{width:min(var(--max),calc(100% - 36px))}.header{height:70px}.menu-toggle{display:flex;flex-direction:column;gap:6px;border:0;background:transparent;padding:10px}.menu-toggle i{display:block;width:24px;height:2px;background:#fff}.navigation{display:none;position:absolute;top:70px;left:0;right:0;padding:20px 22px 25px;background:var(--deep);flex-direction:column;align-items:stretch;gap:0;border-top:1px solid #ffffff20}.navigation.is-open{display:flex}.navigation>a{padding:13px 0;border-bottom:1px solid #ffffff17}.navigation .nav-cta{justify-content:space-between;margin-top:12px;padding:14px}.hero-grid{grid-template-columns:1fr;padding-top:72px;padding-bottom:45px}.hero h1{font-size:clamp(46px,12vw,64px)}.hero-lead{font-size:14px}.hero-meta{flex-wrap:wrap;margin-top:32px;font-size:7px}.hero-art{height:360px;margin-top:22px;transform:none}.art-orbit{width:310px;height:310px}.art-window{width:min(360px,88%)}.window-body{min-height:210px;padding:28px 20px}.window-body h2{font-size:38px}.art-sticker{top:0;right:0;padding:11px 13px}.chip-one{left:-2px;top:70px}.chip-two{right:-4px;bottom:35px}.art-chip{padding:9px 10px;font-size:8px}.art-chip b{width:25px;height:25px}.art-caption{font-size:6px}.hero-bottom .container{padding:15px 0;display:block}.hero-bottom p{font-size:8px;line-height:2;margin-top:7px}.hero-bottom i{margin:0 4px}.section{padding:75px 0}.section-top{margin-bottom:30px}.section-index{font-size:7px}.intro-grid,.work-heading{grid-template-columns:1fr;gap:18px;margin-bottom:35px}.intro-grid h2,.work-heading h2{font-size:43px}.intro-grid>p,.work-heading>p{font-size:13px}.service-row{grid-template-columns:28px 44px 1fr 32px;gap:12px;padding:22px 0}.service-icon{width:40px;height:40px;font-size:17px}.service-main h3{font-size:16px}.service-main p{font-size:10px}.service-tags{grid-column:3/4;gap:5px}.service-tags span{font-size:8px;padding:4px 6px}.service-row>a{grid-column:4;grid-row:1/3;width:30px;height:30px}.work-grid{grid-template-columns:1fr;gap:23px}.work-art{height:285px}.mini-site{padding:24px;width:80%;height:75%}.mini-site strong{font-size:39px}.work-info h3{font-size:17px}.approach-grid,.contact-grid,.faq-grid{grid-template-columns:1fr;gap:40px}.approach-copy h2,.contact-copy h2{font-size:46px}.steps article{padding:18px 0}.pricing-grid{grid-template-columns:1fr}.price-card{min-height:unset;padding:25px}.price-card>p{min-height:unset}.recommended{position:static;display:inline-block;align-self:flex-start;margin-top:12px}.price-card h3{margin-top:16px}.faq-section{padding:75px 0}.faq-grid h2{font-size:44px}.contact-section{padding:75px 0}.contact-form{padding:22px 18px}.form-row{grid-template-columns:1fr;gap:0}.footer-top{flex-wrap:wrap;gap:20px}.footer-top>p{width:100%;order:3;margin:0}.footer-bottom{align-items:flex-start;flex-direction:column;gap:12px}.footer-bottom>div{flex-wrap:wrap;gap:15px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* Catégories du portfolio */
+.portfolio-categories{margin:0 0 28px;padding:20px 0 17px;border-top:1px solid #cfd5ca;border-bottom:1px solid #cfd5ca}
+.portfolio-categories-head{display:flex;justify-content:space-between;gap:20px;color:#899386;font-size:8px;font-weight:800;letter-spacing:.16em;margin-bottom:14px}
+.portfolio-filter-list{display:flex;flex-wrap:wrap;gap:8px}
+.portfolio-filter{display:inline-flex;align-items:center;gap:15px;border:1px solid #cbd3c7;background:transparent;color:#536153;padding:10px 13px;font-size:10px;font-weight:700;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.portfolio-filter:hover{border-color:#71836c;transform:translateY(-2px)}
+.portfolio-filter span{font-size:8px;color:#909b8c}
+.portfolio-filter.is-active{background:var(--deep);border-color:var(--deep);color:#fff}
+.portfolio-filter.is-active span{color:var(--lime)}
+.category-hint{font-size:10px;color:#858e81;margin:12px 0 0}
+.portfolio-filter-grid .work-card[hidden]{display:none!important}
+.portfolio-filter-grid .work-card.is-entering{animation:portfolio-rise .48s cubic-bezier(.2,.75,.2,1) both}
+.portfolio-filter-grid .work-cafe.is-entering{animation:cafe-filter-in .56s cubic-bezier(.2,.75,.2,1) both}
+.portfolio-filter-grid .work-craft.is-entering{animation:craft-filter-in .62s ease both}
+.portfolio-filter-grid .work-property.is-entering{animation:property-filter-in .58s ease both}
+.portfolio-filter-grid .work-beauty.is-entering{animation:beauty-filter-in .72s ease both}
+@keyframes portfolio-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cafe-filter-in{from{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(18px)}to{opacity:1;clip-path:inset(0);transform:translateY(0)}}
+@keyframes craft-filter-in{from{opacity:0;transform:translateY(24px) rotate(-2deg);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes property-filter-in{from{opacity:0;transform:scale(.9);filter:blur(8px)}to{opacity:1;transform:scale(1);filter:none}}
+@keyframes beauty-filter-in{from{opacity:0;transform:translateY(16px) scale(.96);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.work-art{isolation:isolate}
+.work-art:after{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .35s}
+.work-card:hover .work-art:after{opacity:1}
+.work-cafe .work-art:after{background:linear-gradient(130deg,#f2eee380,transparent 55%);mix-blend-mode:screen}
+.work-craft .work-art:after{background:linear-gradient(115deg,#ffffff55,transparent 62%)}
+.work-property .work-art:after{background:linear-gradient(90deg,transparent,#ffffff40)}
+.work-beauty .work-art:after{background:radial-gradient(circle at 50% 45%,#fff8,transparent 65%)}
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:noro-page-out .18s ease both}
+::view-transition-new(root){animation:noro-page-in .34s ease both}
+@keyframes noro-page-out{to{opacity:0}}
+@keyframes noro-page-in{from{opacity:0}to{opacity:1}}
+::view-transition-group(noro-cafe){animation-duration:.72s}
+::view-transition-old(noro-cafe){animation:noro-cafe-out .24s ease both}
+::view-transition-new(noro-cafe){animation:noro-cafe-in .72s cubic-bezier(.18,.8,.22,1) both}
+@keyframes noro-cafe-out{to{opacity:0;transform:scale(.94) translateY(-8px)}}
+@keyframes noro-cafe-in{from{opacity:0;transform:scale(.82) rotate(-4deg);filter:blur(9px)}to{opacity:1;transform:scale(1) rotate(0);filter:blur(0)}}
+::view-transition-group(noro-atelier){animation-duration:.78s}
+::view-transition-old(noro-atelier){animation:noro-atelier-out .26s ease both}
+::view-transition-new(noro-atelier){animation:noro-atelier-in .78s cubic-bezier(.2,.75,.25,1) both}
+@keyframes noro-atelier-out{to{opacity:0;transform:translateY(-15px) rotate(2deg)}}
+@keyframes noro-atelier-in{from{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(26px)}to{opacity:1;clip-path:inset(0);transform:translateY(0)}}
+::view-transition-group(noro-property){animation-duration:.7s}
+::view-transition-old(noro-property){animation:noro-property-out .2s ease both}
+::view-transition-new(noro-property){animation:noro-property-in .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes noro-property-out{to{opacity:0;transform:scale(.92);filter:blur(5px)}}
+@keyframes noro-property-in{from{opacity:0;transform:scale(1.1);filter:blur(11px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+::view-transition-group(noro-beauty){animation-duration:.9s}
+::view-transition-old(noro-beauty){animation:noro-beauty-out .3s ease both}
+::view-transition-new(noro-beauty){animation:noro-beauty-in .9s cubic-bezier(.16,.8,.25,1) both}
+@keyframes noro-beauty-out{to{opacity:0;filter:blur(12px)}}
+@keyframes noro-beauty-in{from{opacity:0;transform:scale(.96);filter:blur(14px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+@media(max-width:700px){.portfolio-categories{margin-top:0}.portfolio-filter-list{gap:6px}.portfolio-filter{padding:9px 10px;font-size:9px}.portfolio-categories-head{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.portfolio-filter-grid .work-card.is-entering{animation:none}::view-transition-old(root),::view-transition-new(root),::view-transition-old(noro-cafe),::view-transition-new(noro-cafe),::view-transition-old(noro-atelier),::view-transition-new(noro-atelier),::view-transition-old(noro-property),::view-transition-new(noro-property),::view-transition-old(noro-beauty),::view-transition-new(noro-beauty){animation:none}}
