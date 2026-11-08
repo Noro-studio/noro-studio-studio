@@ -1,7 +1,7 @@
 /*
-  PARAMÈTRES À MODIFIER AVANT DE PUBLIER LE SITE
-  Remplace contactEmail par une adresse e-mail que tu contrôles.
-  Exemple : contactEmail: "contact@monsite.fr"
+  Configuration du site Noro Studio.
+  L'adresse de contact ci-dessous est déjà configurée.
+  Modifie-la uniquement si tu changes d'adresse de réception.
 */
 window.NORO_CONFIG = {
   brandName: "Noro Studio",
