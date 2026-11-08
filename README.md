@@ -1,43 +1,47 @@
 # Noro Studio — site vitrine
 
-Site vitrine statique, responsive et sans dépendance externe obligatoire ni service payant. Il est construit en HTML, CSS et JavaScript natifs, avec des polices système et des logos SVG locaux.
+Site statique responsive réalisé en HTML, CSS et JavaScript natifs. Le dépôt contient le site de présentation de Noro Studio ainsi que quatre mini-sites fictifs de démonstration.
 
-## Fichiers
+## Structure
 
-- `index.html` : page d'accueil complète.
-- `styles.css` : design responsive.
-- `script.js` : menu mobile, formulaire et interactions.
-- `site-config.js` : paramètres simples à modifier.
-- `legal.html` : modèle d'informations légales à compléter.
-- `assets/` : logo et favicon SVG.
+- `index.html` : page principale de Noro Studio.
+- `styles.css` : styles du site principal.
+- `script.js` : navigation mobile et comportement du formulaire.
+- `site-config.js` : nom du studio et adresse de contact.
+- `legal.html` : modèle d'informations légales, à compléter avant toute exploitation commerciale.
+- `exemples/styles-demo.css` : styles communs aux démonstrations.
+- `exemples/restaurant.html` : concept fictif Le Comptoir.
+- `exemples/artisan.html` : concept fictif Atelier Forme.
+- `exemples/immobilier.html` : concept fictif Aurel Immobilier.
+- `exemples/beaute.html` : concept fictif Studio Ama.
+- `assets/` : logos et icônes SVG.
 
-## Avant de publier
+## Configuration actuelle
 
-1. Ouvre `site-config.js`.
-2. Remplace `A_REMPLACER` par une adresse e-mail que tu contrôles dans `contactEmail`.
-3. Vérifie le nom commercial : « Noro Studio » est un nom de travail, il n'a pas fait l'objet d'une recherche d'antériorité INPI ni d'une vérification de domaine.
-4. Complète `legal.html` avec les véritables informations de l'éditeur et de l'hébergeur, après avoir vérifié les obligations applicables.
-5. Vérifie les tarifs, le périmètre des prestations, les délais, les conditions de paiement, les droits d'utilisation des contenus et les éventuelles conditions de maintenance avant de proposer une offre à un client.
-6. Les trois réalisations affichées sur la page d'accueil sont des concepts fictifs. Garde cette mention tant que tu ne les as pas remplacées par des réalisations réelles ou autorisées.
+L'adresse de contact est déjà renseignée dans `site-config.js` : `contact.lanteuilweb@gmail.com`. Il n'est pas nécessaire de remplacer `A_REMPLACER`.
 
-## Formulaire de contact
+Le formulaire ouvre le logiciel de messagerie du visiteur avec un message prérempli. Il n'envoie pas automatiquement le message et ne stocke pas les demandes sur un serveur. Le visiteur doit vérifier puis envoyer l'e-mail depuis son application.
 
-Le formulaire valide les champs du navigateur puis ouvre le logiciel de messagerie du visiteur avec un e-mail prérempli. Il n'envoie pas automatiquement de message et ne stocke aucune demande sur un serveur. Il fonctionne seulement après configuration de `contactEmail` et si le visiteur dispose d'une application de messagerie configurée.
+## Avant toute exploitation commerciale
 
-## Tester sur ton ordinateur
+1. Vérifier la disponibilité du nom « Noro Studio » auprès de l'INPI et la disponibilité du nom de domaine souhaité.
+2. Compléter `legal.html` avec les informations exactes de l'éditeur, du statut, de l'hébergeur et les autres mentions applicables. Les champs entre crochets sont volontairement laissés à compléter.
+3. Vérifier le statut et les formalités nécessaires avant de proposer régulièrement des prestations payantes.
+4. Valider les tarifs, livrables, délais, modalités de paiement, droits d'utilisation et conditions de maintenance dans un devis ou contrat.
+5. Garder visible la mention indiquant que les quatre mini-sites sont des concepts fictifs, tant qu'ils ne sont pas remplacés par des réalisations réelles et autorisées.
 
-Tu peux double-cliquer sur `index.html` pour ouvrir le site dans ton navigateur. Pour un aperçu plus fiable, lance un petit serveur local depuis ce dossier :
+Le site peut rester en ligne comme portfolio de démonstration pendant sa préparation. Les informations légales doivent être complétées et vérifiées avant l'exploitation commerciale.
+
+## Tester localement
+
+Ouvrir `index.html` dans un navigateur ou lancer un serveur local :
 
 ```bash
 python -m http.server 8000
 ```
 
-Puis ouvre `http://localhost:8000`.
+Puis ouvrir `http://localhost:8000`.
 
-## Publication gratuite
+## Publication
 
-Le site peut être hébergé comme site statique sur une offre gratuite compatible, par exemple GitHub Pages. Le nom de domaine personnalisé, s'il est souhaité, peut être payant. Vérifie les conditions et limites de l'hébergeur choisi avant publication.
-
-## Important
-
-Le site est un support de démonstration prêt à personnaliser, pas une preuve d'immatriculation, un conseil juridique, ni une garantie de résultat commercial. N'annonce pas de clients, avis ou résultats qui ne sont pas réels.
+Le dépôt est configuré pour GitHub Pages depuis la branche `main`, dossier racine. Les modifications validées sur `main` déclenchent la publication automatique, sous réserve que le déploiement GitHub Pages réussisse.
