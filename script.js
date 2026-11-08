@@ -1,73 +1,38 @@
-(function () {
-  "use strict";
-
-  const config = window.NORO_CONFIG || {};
-  const menuButton = document.querySelector(".menu-toggle");
-  const mainNav = document.querySelector(".main-nav");
-  const contactForm = document.getElementById("contact-form");
-  const feedback = document.getElementById("form-feedback");
-  const year = document.getElementById("current-year");
-
-  if (year) year.textContent = String(new Date().getFullYear());
-
-  if (menuButton && mainNav) {
-    menuButton.addEventListener("click", function () {
-      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", String(!isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Ouvrir le menu" : "Fermer le menu");
-      mainNav.classList.toggle("is-open", !isOpen);
-    });
-
-    mainNav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        mainNav.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Ouvrir le menu");
-      });
-    });
-  }
-
-  document.querySelectorAll("[data-offer]").forEach(function (link) {
-    link.addEventListener("click", function () {
-      const needSelect = contactForm && contactForm.querySelector('[name="need"]');
-      if (needSelect) {
-        const offer = link.getAttribute("data-offer");
-        needSelect.value = offer === "Projet sur mesure" ? "Autre demande" : "Créer un site vitrine";
-      }
-    });
-  });
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      if (!contactForm.reportValidity()) return;
-
-      const destination = String(config.contactEmail || "").trim();
-      if (!destination || destination === "A_REMPLACER" || !destination.includes("@")) {
-        feedback.textContent = "Le formulaire est prêt, mais l'adresse de réception n'est pas encore configurée. Ouvre site-config.js et remplace contactEmail par ton adresse e-mail avant de publier le site.";
-        feedback.classList.add("feedback-warning");
-        return;
-      }
-
-      const formData = new FormData(contactForm);
-      const name = String(formData.get("name") || "").trim();
-      const company = String(formData.get("company") || "").trim();
-      const email = String(formData.get("email") || "").trim();
-      const need = String(formData.get("need") || "").trim();
-      const message = String(formData.get("message") || "").trim();
-      const subject = encodeURIComponent("Demande de contact — " + name);
-      const body = encodeURIComponent(
-        "Bonjour,\n\n" +
-        "Nom : " + name + "\n" +
-        "Entreprise : " + (company || "Non renseignée") + "\n" +
-        "E-mail : " + email + "\n" +
-        "Besoin : " + need + "\n\n" +
-        "Message :\n" + message + "\n\n" +
-        "Envoyé depuis le site " + (config.brandName || "du studio") + "."
-      );
-      feedback.textContent = "Ton application de messagerie va s'ouvrir avec le message prérempli. Vérifie-le puis envoie-le.";
-      feedback.classList.remove("feedback-warning");
-      window.location.href = "mailto:" + destination + "?subject=" + subject + "&body=" + body;
-    });
-  }
+(function(){
+"use strict";
+const config=window.NORO_CONFIG||{};
+const menuButton=document.querySelector(".menu-toggle");
+const nav=document.querySelector(".navigation");
+const form=document.getElementById("contact-form");
+const feedback=document.getElementById("form-feedback");
+const year=document.getElementById("current-year");
+if(year) year.textContent=String(new Date().getFullYear());
+if(menuButton&&nav){
+ menuButton.addEventListener("click",function(){
+  const open=menuButton.getAttribute("aria-expanded")==="true";
+  menuButton.setAttribute("aria-expanded",String(!open));
+  menuButton.setAttribute("aria-label",open?"Ouvrir le menu":"Fermer le menu");
+  nav.classList.toggle("is-open",!open);
+ });
+ nav.querySelectorAll("a").forEach(function(link){link.addEventListener("click",function(){nav.classList.remove("is-open");menuButton.setAttribute("aria-expanded","false");menuButton.setAttribute("aria-label","Ouvrir le menu");});});
+}
+document.querySelectorAll("[data-offer]").forEach(function(link){link.addEventListener("click",function(){const select=form&&form.querySelector('[name="need"]');if(select){const offer=link.getAttribute("data-offer");select.value=offer==="Projet sur mesure"?"Projet sur mesure":"Créer un site vitrine";}});});
+if(form){
+ form.addEventListener("submit",function(event){
+  event.preventDefault();
+  if(!form.reportValidity()) return;
+  const destination=String(config.contactEmail||"").trim();
+  if(!destination||!destination.includes("@")){feedback.textContent="L'adresse de contact n'est pas correctement configurée. Écrivez directement à contact.lanteuilweb@gmail.com.";return;}
+  const data=new FormData(form);
+  const name=String(data.get("name")||"").trim();
+  const company=String(data.get("company")||"").trim();
+  const email=String(data.get("email")||"").trim();
+  const need=String(data.get("need")||"").trim();
+  const message=String(data.get("message")||"").trim();
+  const subject=encodeURIComponent("Demande de projet Noro Studio — "+name);
+  const body=encodeURIComponent("Bonjour Noro Studio,\n\nNom : "+name+"\nEntreprise : "+(company||"Non renseignée")+"\nE-mail : "+email+"\nBesoin : "+need+"\n\nMessage :\n"+message);
+  feedback.textContent="Votre messagerie va s'ouvrir avec le message prérempli. Vérifiez-le puis envoyez-le pour nous contacter.";
+  window.location.href="mailto:"+destination+"?subject="+subject+"&body="+body;
+ });
+}
 })();
